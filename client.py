@@ -8,15 +8,16 @@ print(f"Ouverture de la socket sur le serveur {host} port {port}")
 client_socket = socket.socket()
 client_socket.connect((host, port))
 print("Serveur est connecté")
+msgserv = msg = ""
+while msg !="bye" and msgserv !="bye" and msg !="arret" and msgserv !="arret" :
+    #Envoie message
+    msg = input("Message au serveur : ")
+    client_socket.send(msg.encode())
+    print("Message envoyé")
 
-#Envoie message
-message = input("Message au serveur : ")
-client_socket.send(message.encode())
-print("Message envoyé")
-
-#Reception message
-data = client_socket.recv(1024).decode()
-print(f"Message du serveur : {data}")
+    #Reception message
+    msgserv = client_socket.recv(1024).decode()
+    print(f"Message du serveur : {msgserv}")
 
 # Fermeture de la socket du client
 client_socket.close()
