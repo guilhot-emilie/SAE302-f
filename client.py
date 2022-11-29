@@ -1,19 +1,23 @@
 import socket
 
+host = "localhost" # "", "127.0.0.1
+port = 10000
+
+#Connexion au serveur
+print(f"Ouverture de la socket sur le serveur {host} port {port}")
 client_socket = socket.socket()
-client_socket.connect(('127.0.0.1', 10000))
-msg = ""
-msgserv = ""
+client_socket.connect((host, port))
+print("Serveur est connecté")
 
-while msg !="bye" and msgserv !="bye" and msg !="arret" and msgserv !="arret" :
-    msg = input("Entrez votre message:")
-    client_socket.send(msg.encode())
-    msgserv = client_socket.recv(1024).decode()
-    print("msg reçu:",msgserv)
+#Envoie message
+message = input("Message au serveur : ")
+client_socket.send(message.encode())
+print("Message envoyé")
+
+#Reception message
+data = client_socket.recv(1024).decode()
+print(f"Message du serveur : {data}")
+
+# Fermeture de la socket du client
 client_socket.close()
-
-def reception(client_socket):
-    msg = ""
-    while msg !="bye" and msgserv !="bye" and msg !="arret" and msgserv !="arret" :
-        msg = client_socket.recv(1024).decode()
-        print("Message reçu:",msgserv)
+print("Socket fermée")
