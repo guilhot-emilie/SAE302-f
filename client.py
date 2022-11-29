@@ -1,7 +1,7 @@
 import socket
 
 class serveur:
-    def __init__(self, hostname, port)
+    def __init__(self, hostname, port):
         self.__port = port
         self.__hostname = hostname
         self.__socket = None
@@ -16,7 +16,7 @@ class serveur:
     def __send(self,msg):
         if self.isConnected():
             socket.send(msg)
-            msg=socket.receive(._)
+            msg=socket.receive()
             print(msg)
         else:
             print("Pas de connexion")
