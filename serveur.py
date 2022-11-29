@@ -1,26 +1,20 @@
 import socket
 
-class serveur:
-    def __init__(self, hostname, port)
-        self.__port = port
-        self.__hostname = hostname
-        self.__socket = None
+host = "localhost" # "", "127.0.0.1
+port = 10000
 
-    def isConnected(self):
-        return(self.__socket!=None)
+print(f"Ouverture de la socket sur le serveur {host} port {port}")
+client_socket = socket.socket()
+client_socket.connect((host, port))
+print("Serveur est connecté")
 
-    def __Connected(self):
-        socket = socket.socket()
-        socket.connect(self.__host,self.__port)
+message = input("Message au serveur : ")
+client_socket.send(message.encode())
+print("Message envoyé")
 
-    def __send(self,msg):
-        if self.isConnected():
-            socket.send(msg)
-            msg=socket.receive(._)
-            print(msg)
-        else:
-            print("Pas de connexion")
+data = client_socket.recv(1024).decode()
+print(f"Message du serveur : {data}")
 
-def close(self):
-    socket.close()
-
+# Fermeture de la socket du client
+client_socket.close()
+print("Socket fermée")
