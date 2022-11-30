@@ -6,7 +6,7 @@ class server:
         self.__host = host
         self.__socket = None
 
-    def Connected(self):
+    def connected(self):
         self.__socket = socket.socket()
         self.__socket.connect((self.__host,self.__port))
 
@@ -21,5 +21,5 @@ class server:
         else:
             print("Pas de connexion")
 
-    def Close(self):
+    def close(self):
         self.__socket.close()

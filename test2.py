@@ -5,7 +5,7 @@ from client import server
 host = input("hostname:")
 port = int(input("port:"))
 heim = server(host, port)
-heim.Connected()
+heim.connected()
 rep = heim.send("coucou")
 if rep =="":
     print("serveur non connecté")
