@@ -1,7 +1,7 @@
 import socket
 
 host = "localhost" # "", "127.0.0.1
-port = 10000
+port = 5005
 
 server_socket = socket.socket()
 server_socket.bind((host, port))

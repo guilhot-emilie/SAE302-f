@@ -6,20 +6,20 @@ class server:
         self.__host = host
         self.__socket = None
 
+    def Connected(self):
+        self.__socket = socket.socket()
+        self.__socket.connect((self.__host,self.__port))
+
     def isConnected(self):
         return(self.__socket!=None)
 
-    def Connected(self):
-        socket = socket.socket()
-        socket.connect(self.__host,self.__port)
-
-    def Send(self,msg):
+    def send(self,msg):
         if self.isConnected():
-            socket.send(msg)
-            msg=socket.receive(1024).decode()
+            self.__socket.send(msg.encode())
+            msg=self.__socket.recv(1024).decode()
             print(msg)
         else:
             print("Pas de connexion")
 
     def Close(self):
-        socket.close()
+        self.__socket.close()

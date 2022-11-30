@@ -1,13 +1,12 @@
 import socket
 from client import server
-#import serveur
 
 
 host = input("hostname:")
-port = input("port:")
+port = int(input("port:"))
 heim = server(host, port)
 heim.Connected()
-rep = heim.Send("coucou")
+rep = heim.send("coucou")
 if rep =="":
     print("serveur non connecté")
 else:
