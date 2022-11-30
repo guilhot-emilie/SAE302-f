@@ -3,18 +3,26 @@ import socket
 host = "localhost" # "", "127.0.0.1
 port = 10000
 
-print(f"Ouverture de la socket sur le serveur {host} port {port}")
-client_socket = socket.socket()
-client_socket.connect((host, port))
-print("Serveur est connecté")
+server_socket = socket.socket()
+server_socket.bind((host, port))
+server_socket.listen(1)
 
-message = input("Message au serveur : ")
-client_socket.send(message.encode())
-print("Message envoyé")
+print('En attente du client')
+conn, address = server_socket.accept()
+print(f'Client connecté {address}')
 
-data = client_socket.recv(1024).decode()
-print(f"Message du serveur : {data}")
+# Réception du message du client
+msgb = conn.recv(1024) # message en by
+message = msgb.decode()
+print(f"Message du client : {message}")
 
-# Fermeture de la socket du client
-client_socket.close()
-print("Socket fermée")
+# J'envoie un message
+reply = input("Saisir un message : ")
+conn.send(reply.encode())
+print(f"Message {reply} envoyé")
+
+# Fermeture
+conn.close()
+print("Fermeture de la socket client")
+server_socket.close()
+print("Fermeture de la socket serveur")

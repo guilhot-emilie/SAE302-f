@@ -1,25 +1,25 @@
 import socket
 
-class serveur:
-    def __init__(self, hostname, port):
+class server:
+    def __init__(self, host, port):
         self.__port = port
-        self.__hostname = hostname
+        self.__host = host
         self.__socket = None
 
     def isConnected(self):
         return(self.__socket!=None)
 
-    def __Connected(self):
+    def Connected(self):
         socket = socket.socket()
         socket.connect(self.__host,self.__port)
 
-    def __send(self,msg):
+    def Send(self,msg):
         if self.isConnected():
             socket.send(msg)
-            msg=socket.receive()
+            msg=socket.receive(1024).decode()
             print(msg)
         else:
             print("Pas de connexion")
 
-    def close(self):
+    def Close(self):
         socket.close()
