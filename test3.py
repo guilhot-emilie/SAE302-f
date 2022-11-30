@@ -10,7 +10,7 @@ hostsock1.connect()
 hostsock2.connect()
 Thread.sleep(2)
 
-for i in range(10)
+for i in range(10):
     hostsock1.send("OS")
     hostsock2.send("CPU")
 hostsock1.close()
