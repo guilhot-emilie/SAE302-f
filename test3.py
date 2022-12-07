@@ -4,8 +4,8 @@ from client import server
 
 host1 = input("1er serveur")
 host2 = input("2eme serveur")
-hostsock1 = server(host1, 1001)
-hostsock2 = server(host2, 1001)
+hostsock1 = server(host1, 5005)
+hostsock2 = server(host2, 4004)
 hostsock1.connect()
 hostsock2.connect()
 Thread.sleep(2)

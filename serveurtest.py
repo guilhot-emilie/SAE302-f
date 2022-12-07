@@ -1,6 +1,6 @@
 import socket
 
-port = 5005
+port = 4004
 
 server_socket = socket.socket()
 server_socket.bind(("0.0.0.0", port))

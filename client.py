@@ -25,7 +25,7 @@ class server:
         self.__socket.close()
 
     def connect(self):
-        self.__tconnected = threading.Thread(target = self.__connect)
+        self.__tconnected = threading.Thread(target = self.__connected)
         self.__tconnected.start()
 
 
